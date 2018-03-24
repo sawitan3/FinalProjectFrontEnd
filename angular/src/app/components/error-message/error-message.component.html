@@ -1,0 +1,5 @@
+<div class="alert {{msg.classType}}" *ngIf="msg.classType">
+  <div *ngFor="let keyValuePair of someObject | mapToIterable">
+    {{keyValuePair.val}}.
+  </div>
+</div>

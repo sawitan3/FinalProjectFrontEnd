@@ -16,6 +16,9 @@ import { HomeComponent } from './components/home/home.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import {MessageService} from './services/message.service';
+import {MapToIterable} from './map-to-iterable.pipe';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import {FormsModule} from '@angular/forms';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorMessageComponent,
+    MapToIterable
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import {FormsModule} from '@angular/forms';
   providers: [
       RestService,
       CrudService,
-      AuthService
+      AuthService,
+      MessageService
   ],
   bootstrap: [AppComponent]
 })

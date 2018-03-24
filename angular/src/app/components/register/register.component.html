@@ -1,15 +1,16 @@
-<form action="">
-    <label for="name">Name: </label>
-    <input type="text" id="name">
+<app-error-message></app-error-message>
+<form method="post" (submit)="register()">
+    <label>Name: </label>
+    <input type="text" name="name" [(ngModel)]="model.name">
     <br>
-    <label for="email">Email: </label>
-    <input type="text" id="email">
+    <label>Email: </label>
+    <input type="text" name="email" [(ngModel)]="model.email">
     <br>
-    <label for="password">Password: </label>
-    <input type="text" id="password">
+    <label>Password: </label>
+    <input type="text" name="password" [(ngModel)]="model.password">
     <br>
-    <label for="phone">Phone Number: </label>
-    <input type="text" id="phone">
+    <label>Phone Number: </label>
+    <input type="text" name="phone" [(ngModel)]="model.phone">
     <br>
     <button type="submit">Register</button>
 </form>
