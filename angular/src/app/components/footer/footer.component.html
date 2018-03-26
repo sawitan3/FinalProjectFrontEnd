@@ -1,2 +1,15 @@
-<hr>
-Footer
+<div id="footer" class="container-fluid" style="padding-top: 2rem">
+  <div class="row">
+    <div class="col-md-2" *ngFor="let fi of footer">
+      <ul class="footer-li">
+        <li><strong>{{ fi.title }}</strong></li>
+        <li *ngFor="let it of fi.items"><a [href]="it.link">{{ it.text }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm text-center">
+      Copyright &copy; 2018 HSYDEV - Best viewed in Firefox Quantum
+    </div>
+  </div>
+</div>

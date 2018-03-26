@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+#footer {
+  background: #111;
+  color: white;
+  font-size: 0.7rem;
+}
+
+#footer li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+#footer strong {
+  text-transform: uppercase;
+}
+
+#footer a {
+  color: grey;
+}
+
+#footer a:hover {
+  color: white;
+  text-decoration: none;
+}

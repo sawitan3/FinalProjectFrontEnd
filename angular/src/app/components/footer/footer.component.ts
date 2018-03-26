@@ -7,9 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  footer: any = [
+    {
+      title: 'Footer 1',
+      items: [
+        {text: 'Item 1', link: '#'},
+        {text: 'Item 1', link: '#'},
+        {text: 'Item 1', link: '#'}
+      ]
+    },
+    {
+      title: 'Footer 1',
+      items: [
+        {text: 'Item 1', link: '#'},
+        {text: 'Item 1', link: '#'},
+        {text: 'Item 1', link: '#'}
+      ]
+    }
+  ];
 
-  ngOnInit() {
+  constructor () { }
+
+  ngOnInit () {
   }
 
 }
