@@ -22,6 +22,7 @@ import {MapToIterable} from './map-to-iterable.pipe';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { CartComponent } from './components/cart/cart.component';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { UserPanelComponent } from './components/user-panel/user-panel.component
     MapToIterable,
     ProductPageComponent,
     CartComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
