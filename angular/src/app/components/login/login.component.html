@@ -1,11 +1,14 @@
-<app-error-message></app-error-message>
-<form method="post" (submit)="login()">
-    <label>Email: </label>
-    <input type="text" name="email" [(ngModel)]="model.email">
-    <br>
-    <label>Password: </label>
-    <input type="text" name="password" [(ngModel)]="model.password">
-    <br>
-    <button type="submit">Login</button>
-</form>
+<div class="container">
+    <h2>LOGIN</h2>
+    <app-error-message></app-error-message>
+    <form method="post" (submit)="login()">
+        <label>Email: </label>
+        <input type="text" name="email" [(ngModel)]="model.email" class="form-control">
+        <label>Password: </label>
+        <input type="text" name="password" [(ngModel)]="model.password" class="form-control">
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+
 

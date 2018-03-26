@@ -19,6 +19,9 @@ import {FormsModule} from '@angular/forms';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import {MessageService} from './services/message.service';
 import {MapToIterable} from './map-to-iterable.pipe';
+import { ProductPageComponent } from './components/product-page/product-page.component';
+import { CartComponent } from './components/cart/cart.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import {MapToIterable} from './map-to-iterable.pipe';
     FooterComponent,
     HomeComponent,
     ErrorMessageComponent,
-    MapToIterable
+    MapToIterable,
+    ProductPageComponent,
+    CartComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,
