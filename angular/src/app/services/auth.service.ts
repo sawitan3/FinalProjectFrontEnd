@@ -12,7 +12,11 @@ export class AuthService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private rest: RestService, private router: Router, private message: MessageService) { }
+  constructor(
+    private rest: RestService,
+    private router: Router,
+    private message: MessageService
+  ) { }
 
   login(body) {
     this.rest.post('/api/auth/login', body, this.header).subscribe(
