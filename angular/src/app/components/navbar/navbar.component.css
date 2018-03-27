@@ -1,0 +1,19 @@
+.megamenu ul {
+  list-style-type: none;
+  list-style-position:inside;
+  margin:0;
+  padding:0;
+}
+
+.megamenu a {
+  text-decoration: none;
+  color: #ffffffaa;
+}
+
+.megamenu a:hover {
+  color: inherit;
+}
+
+.megamenu > .container{
+  padding-bottom: 1rem;
+}
