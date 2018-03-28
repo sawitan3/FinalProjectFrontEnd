@@ -12,13 +12,20 @@ export class AuthService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private rest: RestService, private router: Router, private message: MessageService) { }
+  constructor(
+    private rest: RestService,
+    private router: Router,
+    private message: MessageService
+  ) { }
 
   login(body) {
     this.rest.post('/api/auth/login', body, this.header).subscribe(
       res => {
         this.data = res;
+        let name = JSON.parse(atob(this.data.access_token.split('.')[1])).name;
+
         localStorage.setItem('token', this.data.access_token);
+        localStorage.setItem('name', name);
         this.router.navigate(['/']);
       },
       err =>{
