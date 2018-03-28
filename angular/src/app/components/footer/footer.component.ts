@@ -9,15 +9,17 @@ export class FooterComponent implements OnInit {
 
   footer: any = [
     {
-      title: 'Footer 1',
+      title: 'GET HELP',
+      link: '#',
       items: [
-        {text: 'Item 1', link: '#'},
-        {text: 'Item 1', link: '#'},
-        {text: 'Item 1', link: '#'}
+        {text: 'Payment Options', link: '#'},
+        {text: 'Contact Us', link: '#'},
+        {text: 'Something', link: '#'}
       ]
     },
     {
-      title: 'Footer 1',
+      title: 'ABOUT US',
+      link: 'about-us',
       items: [
         {text: 'Item 1', link: '#'},
         {text: 'Item 1', link: '#'},
