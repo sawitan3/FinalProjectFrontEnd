@@ -31,8 +31,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.crud.load('/api/menu');
-    this.item.getItem().subscribe(res=>{
+    this.crud.load('/api/menu').subscribe(res=>{
        this.navs = res;
     });
   }
@@ -43,7 +42,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadTags( tags:any ){
-    console.log(tags)
+
   }
 
 }
