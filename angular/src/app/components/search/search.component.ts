@@ -16,28 +16,16 @@ export class SearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private crud: CrudService,
-    private item: ItemService
   ) {}
 
-
-  getParam(name: string){
-    let orig = document.location.search.substr(1);
-    let parse = JSON.parse('{"' + decodeURI(orig)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g,'":"') + '"}'
-    )
-    return parse[name];
-  }
-
   ngOnInit() {
-    this.item.clearItem();
-    this.params['q'] = this.getParam('q');
-    this.params['t'] = this.getParam('t');
+    this.route.queryParamMap.subscribe(query => {
+      this.params['q'] = query.get('q');
+      this.params['t'] = query.get('t');
+    });
 
     this.crud.post('/api/search', JSON.stringify(this.params)).subscribe(res => {
       this.items = res;
-      console.log(res);
     });
   }
 }

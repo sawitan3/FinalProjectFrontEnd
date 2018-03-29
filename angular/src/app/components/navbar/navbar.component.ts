@@ -16,6 +16,8 @@ export class NavbarComponent implements OnInit {
 
   sel: number = undefined;
 
+  public q: string = undefined;
+
   get isLoggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -43,6 +45,10 @@ export class NavbarComponent implements OnInit {
 
   loadTags( tags:any ){
 
+  }
+
+  search(){
+    this.router.navigate(['search'],{queryParams:{q:this.q}});
   }
 
 }
