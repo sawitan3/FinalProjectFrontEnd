@@ -1,5 +1,68 @@
-<ul>
-  <li *ngFor="let item of items">
-    {{item.name}}
-  </li>
-</ul>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-3" *ngFor="let item of items.data">
+      <div class="card text-center">
+        <img class="card-img-top" src="https://static.shop.adidas.co.id/media/catalog/product/cache/1/small_image/250x/9df78eab33525d08d6e5fb8d27136e95/C/Q/CQ2444_SL_eCom.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.short_desc}}</p>
+          <p class="card-text">{{item.skus[0].price | currency : 'Rp '}}</p>
+          <span class="btn btn-dark">Buy Now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-12">
+      <nav class="mx-auto" aria-label="PageofProduct">
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{'disabled': items.current_page===1}">
+            <span class="page-link" (click)="getPage(items.prev_page_url)">Previous</span>
+          </li>
+
+          <li class="page-item active"><a class="page-link">{{items.current_page}}</a></li>
+
+          <li class="page-item" [ngClass]="{'disabled': items.next_page_url==null}">
+            <span class="page-link" (click)="getPage(items.next_page_url)">Next</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!--<div class="row">-->
+  <!--<div class="col-sm-3">-->
+    <!--<div class="card text-center">-->
+      <!--<img class="card-img-top" src="" alt="Card image cap">-->
+      <!--<div class="card-body">-->
+        <!--<h5 class="card-title">New Arrivals</h5>-->
+        <!--<p class="card-text">Our newest brands are here!</p>-->
+        <!--<a href="#" class="btn btn-dark">Shop Now</a>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--{{item.sku[0]['image']['medium']}}-->
+
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

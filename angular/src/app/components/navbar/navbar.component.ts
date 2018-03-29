@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   sel: number = undefined;
 
   public q: string = undefined;
+  public t: string = undefined;
 
   get isLoggedIn() {
     return !!localStorage.getItem('token');
@@ -43,8 +44,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  loadTags( tags:any ){
-
+  loadTags( tags: any ){
+    this.router.navigate(['search'],{queryParams:{t:tags.join('+')}});
   }
 
   search(){

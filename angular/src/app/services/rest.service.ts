@@ -21,4 +21,9 @@ export class RestService {
   delete(route, header){
     return this.http.delete<any>(this.url + route, header);
   }
+
+  getWithoutBaseUrl(route, body){
+    console.log(route);
+    return this.http.post<any>(route,body);
+  }
 }
