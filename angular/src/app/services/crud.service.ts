@@ -26,7 +26,6 @@ export class CrudService {
   }
 
   create(route, body){
-
     return this.rest.post(route, body, this.header);
   }
 
