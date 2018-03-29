@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {CrudService} from "../../services/crud.service";
-import {ItemService} from "../../services/item.service";
+import {RestService} from "../../services/rest.service";
 
 @Component({
   selector: 'app-search',
@@ -11,11 +11,12 @@ import {ItemService} from "../../services/item.service";
 export class SearchComponent implements OnInit {
 
   public params: any = {};
-  public items: any;
+  public items: any = {};
 
   constructor(
     private route: ActivatedRoute,
     private crud: CrudService,
+    private rest: RestService
   ) {}
 
   ngOnInit() {
@@ -25,6 +26,12 @@ export class SearchComponent implements OnInit {
     });
 
     this.crud.post('/api/search', JSON.stringify(this.params)).subscribe(res => {
+      this.items = res;
+    });
+  }
+
+  getPage(link: any){
+    this.rest.getWithoutBaseUrl(link, this.params).subscribe(res =>{
       this.items = res;
     });
   }
