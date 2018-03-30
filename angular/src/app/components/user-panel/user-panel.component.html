@@ -30,7 +30,7 @@
                   <td>{{ order.time}}</td>
                   <td>{{ order.total}}</td>
                   <td>Status</td>
-                  <td><a [routerLink]="['user']" class="btn btn-dark ">View details</a></td>
+                  <td><a [routerLink]="['user']" class="btn btn-dark">View details</a></td>
                 </tr>
               </tbody>
             </table>
@@ -71,7 +71,39 @@
                   <button type="submit" class="btn btn-primary">Change password</button>
                 </form>
               </div>
-          </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h3>Addresses</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th colspan="2">Phone number</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let address of addresses">
+                      <tr>
+                        <td>{{ address.entry_name }}</td>
+                        <td>{{ address.phone_number }}</td>
+                        <td>
+                          <a class="btn btn-outline-primary">Edit</a>
+                          <a class="btn btn-outline-danger">Delete</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">{{ address.address }}</td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+            </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent implements OnInit {
-  protected orders: any= [
+  protected orders: any = [
     {
       id: 1,
       time: '2018-03-29 18:37:02',
@@ -36,6 +36,20 @@ export class UserPanelComponent implements OnInit {
           paid: 3500
         }
       ]
+    }
+  ];
+  protected addresses: any = [
+    {
+      id: 0,
+      entry_name: 'Rumah',
+      phone_number: '14045',
+      address: 'Jl. Hang Lekir No. 123, Rawa Jati, Dago, Jakarta Barat 12432'
+    },
+    {
+      id: 0,
+      entry_name: 'Kantor',
+      phone_number: '14045',
+      address: 'Jl. Hang Tuah No. 456, Rawa Buntu, Coblong, Jakarta Barat 1241'
     }
   ];
   public model: any = {};
