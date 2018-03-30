@@ -59,4 +59,12 @@ export class UserPanelComponent implements OnInit {
         this.message.sendMessage('alert-danger',err);
     });
   }
+
+  deleteAddress(id: any){
+    this.crud.delete(`/api/user/deleteAddress?id=${id}`).subscribe(res=>{
+        this.message.sendMessage('alert-success',res);
+    },err=>{
+        this.message.sendMessage('alert-danger',err);
+    });
+  }
 }
