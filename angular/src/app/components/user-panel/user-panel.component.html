@@ -52,9 +52,9 @@
                   </div>
                   <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" [(ngModel)]="model.phone" name="email" id="phone">
+                    <input type="text" class="form-control" [(ngModel)]="model.phone" name="phone" id="phone">
                   </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#message" (click)="changeProfile()">Save</button>
                 </form>
               </div>
               <div class="col-md">
@@ -109,3 +109,23 @@
     </div>
   </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-error-message></app-error-message>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
