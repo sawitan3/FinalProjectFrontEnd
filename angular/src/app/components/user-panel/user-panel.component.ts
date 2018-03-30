@@ -16,7 +16,7 @@ export class UserPanelComponent implements OnInit {
         {
           id: 1,
           header_id: 1,
-          sku: (
+          sku: {
             id: 1,
             product_id: 1,
             color: {
@@ -31,7 +31,7 @@ export class UserPanelComponent implements OnInit {
             price: 3500,
             stock: 3,
             fullname: 'Kratingdaeng Hitam'
-          ),
+          },
           qty: 1,
           paid: 3500
         }
