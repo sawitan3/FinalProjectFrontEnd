@@ -30,7 +30,13 @@
                   <td>{{ order.time}}</td>
                   <td>{{ order.total}}</td>
                   <td>Status</td>
-                  <td><a [routerLink]="['user']" class="btn btn-dark">View details</a></td>
+                  <td>
+                    <a
+                      [routerLink]="['pay', order.id]"
+                      ngClass="['btn', 'btn-dark', {disabled: }]"
+                    >Pay</a>
+                    <a [routerLink]="['user']" class="btn btn-dark">View details</a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -99,7 +105,7 @@
                       <tr>
                         <td>{{ address.entry_name }}</td>
                         <td>{{ address.phone_number }}</td>
-                        <td>
+                        <td class="text-right">
                           <a class="btn btn-outline-primary">Edit</a>
                           <a class="btn btn-outline-danger">Delete</a>
                         </td>

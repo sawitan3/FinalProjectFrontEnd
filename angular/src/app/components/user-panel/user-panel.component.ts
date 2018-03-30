@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CrudService} from "../../services/crud.service";
-import {MessageService} from "../../services/message.service";
+import {CrudService} from '../../services/crud.service';
+import {MessageService} from '../../services/message.service';
 
 @Component({
   selector: 'app-user-panel',
@@ -8,10 +8,10 @@ import {MessageService} from "../../services/message.service";
   styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent implements OnInit {
-  public msg: any = {};
-  public orders: any = [];
-  public addresses: any = [];
-  public model: any = {};
+  public msg: object = {};
+  public orders: object = [];
+  public addresses: object = [];
+  public model: object = {};
 
   constructor(
     private crud: CrudService,
@@ -19,24 +19,24 @@ export class UserPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.crud.load('/api/user/statusLastTrans').subscribe(res=>{
+    this.crud.load('/api/user/statusLastTrans').subscribe(res => {
       this.orders = res;
-    },err=>{
+    }, err => {
       this.msg = err;
     });
-    this.crud.load('/api/user/profile').subscribe(res=>{
+    this.crud.load('/api/user/profile').subscribe(res => {
       this.addresses = res['address'];
       this.model = res;
-    },err=>{
+    }, err => {
       this.msg = err;
     });
   }
 
-  changeProfile(){
-    this.crud.update('/api/user/updateProfile', this.model).subscribe(res=>{
+  changeProfile() {
+    this.crud.update('/api/user/updateProfile', this.model).subscribe(res => {
         console.log(res);
         this.message.sendMessage('alert-success', res);
-    }, err=>{
+    }, err => {
         console.log(err);
         this.message.sendMessage('alert-danger', err.error);
     });
