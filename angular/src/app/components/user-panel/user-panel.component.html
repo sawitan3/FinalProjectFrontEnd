@@ -28,7 +28,7 @@
                 <tr *ngFor="let order of orders">
                   <th>{{ order.id }}</th>
                   <td>{{ order.time }}</td>
-                  <td>{{ order.total }}</td>
+                  <td>{{ order.total | currency : 'Rp ' }} </td>
                   <td>{{ order.status }}</td>
                   <td><a class="btn btn-dark" data-toggle="modal" data-target="#detailTrans" (click)="detailTransaction(order.id)">View details</a></td>
                 </tr>
@@ -165,7 +165,7 @@
               <tr *ngFor="let detailOrder of detailOrders">
                 <td>{{ detailOrder.sku.fullname }}</td>
                 <td>{{ detailOrder.qty }}</td>
-                <td>{{ detailOrder.paid }}</td>
+                <td>{{ detailOrder.paid | currency : 'Rp ' }}</td>
                 <td>{{ detailOrder.sku.size.name }}/{{detailOrder.sku.color.name}}</td>
               </tr>
               </tbody>

@@ -55,7 +55,6 @@ export class UserPanelComponent implements OnInit {
   detailTransaction(id: any){
     this.crud.load(`/api/user/detailHead?id=${id}`).subscribe(res=>{
       this.detailOrders = res;
-      console.log(res);
     },err=>{
         this.message.sendMessage('alert-danger',err);
     });
