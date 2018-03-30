@@ -20,13 +20,13 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.route.queryParamMap.subscribe(query => {
       this.params['q'] = query.get('q');
       this.params['t'] = query.get('t');
-    });
-
-    this.crud.post('/api/search', JSON.stringify(this.params)).subscribe(res => {
-      this.items = res;
+      this.crud.post('/api/search', JSON.stringify(this.params)).subscribe(res => {
+        this.items = res;
+      });
     });
   }
 
@@ -34,5 +34,10 @@ export class SearchComponent implements OnInit {
     this.rest.getWithoutBaseUrl(link, this.params).subscribe(res =>{
       this.items = res;
     });
+  }
+
+  addToCart(id: any){
+    console.log(id);
+
   }
 }
