@@ -30,10 +30,10 @@
                   <td>{{ order.time}}</td>
                   <td>{{ order.total}}</td>
                   <td>Status</td>
-                  <td>
+                  <td class="text-right">
                     <a
                       [routerLink]="['pay', order.id]"
-                      ngClass="['btn', 'btn-dark', {disabled: }]"
+                      class="btn btn-success"
                     >Pay</a>
                     <a [routerLink]="['user']" class="btn btn-dark">View details</a>
                   </td>
@@ -57,7 +57,7 @@
                     <input type="email" class="form-control" [(ngModel)]="model.email" name="email" id="email">
                   </div>
                   <div class="form-group">
-                    <label for="phone">Phone</label>
+                    <label for="phone">Phone</label>s
                     <input type="text" class="form-control" [(ngModel)]="model.phone" name="phone" id="phone">
                   </div>
                   <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#message" (click)="changeProfile()">Save</button>
