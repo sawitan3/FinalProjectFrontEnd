@@ -37,7 +37,7 @@ export class AuthService {
   register(body) {
     this.rest.post('/api/auth/register', body, this.header).subscribe(
       res => {
-        this.message.sendMessage('alert-success','register success');
+        this.message.sendMessage('alert-success',{'msg':'register success'});
     },
       err=>{
         let error = err.error;
