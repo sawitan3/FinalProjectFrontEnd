@@ -32,18 +32,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.crud.load('/api/menu');
-    this.item.getItem().subscribe(res=>{
+    this.item.getItem().subscribe(res => {
        this.navs = res;
     });
   }
 
-  logout(){
+  logout() {
     localStorage.clear();
     this.router.navigate(['']);
   }
 
-  loadTags( tags:any ){
-    console.log(tags)
+  loadTags( tags: any ) {
+    console.log(tags);
   }
 
 }
