@@ -12,6 +12,7 @@ export class CrudService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')
   })};
+  }
 
   post (route, body){
     return this.create(route, body);
@@ -26,14 +27,14 @@ export class CrudService {
   }
 
   create(route, body){
-    return this.rest.post(route, body, this.header);
+    return this.rest.post(route, body, this.getHeader());
   }
 
   update(route, body){
-    return this.rest.put(route, body, this.header);
+    return this.rest.put(route, body, this.getHeader());
   }
 
   delete(route){
-    return this.rest.delete(route, this.header);
+    return this.rest.delete(route, this.getHeader());
   }
 }

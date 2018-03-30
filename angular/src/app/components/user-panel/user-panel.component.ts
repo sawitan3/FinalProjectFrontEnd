@@ -8,10 +8,11 @@ import {MessageService} from '../../services/message.service';
   styleUrls: ['./user-panel.component.css']
 })
 export class UserPanelComponent implements OnInit {
-  public msg: object = {};
-  public orders: object = [];
-  public addresses: object = [];
-  public model: object = {};
+  public msg: any = {};
+  public orders: any = [];
+  public addresses: any = [];
+  public model: any = {};
+  public data: any = {};
 
   constructor(
     private crud: CrudService,
@@ -32,13 +33,29 @@ export class UserPanelComponent implements OnInit {
     });
   }
 
-  changeProfile() {
-    this.crud.update('/api/user/updateProfile', this.model).subscribe(res => {
-        console.log(res);
+  changeProfile(){
+    this.crud.update('/api/user/updateProfile', this.model).subscribe(res=>{
         this.message.sendMessage('alert-success', res);
-    }, err => {
-        console.log(err);
+    }, err=>{
         this.message.sendMessage('alert-danger', err.error);
+    });
+  }
+
+  changePassword(){
+    if(this.data.pass == this.data.repass){
+        this.crud.update('/api/user/updatePassword',this.data).subscribe(res=>{
+            this.message.sendMessage('alert-success', res);
+        },err=>{
+            this.message.sendMessage('alert-danger', err.error);
+        });
+    }
+  }
+
+  detailTransactioin(id: any){
+    this.crud.load(`/api/user/getDetailHead?id=${id}`).subscribe(res=>{
+      
+    },err=>{
+        this.message.sendMessage('alert-danger',err);
     });
   }
 }
