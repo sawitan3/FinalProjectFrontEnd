@@ -1,3 +1,50 @@
-<p>
-  cart works!
-</p>
+<div class="container pt-3 pb-3">
+  <div class="row">
+    <div class="col">
+      <h1>Cart</h1>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2">Item</th>
+          <th>Amount</th>
+          <th>Action</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of cart_items; let i = index">
+          <td>
+            <img [src]="cart.SKU.image.small" [alt]="cart.SKU.fullname">
+          </td>
+          <td>
+            {{ cart.SKU.fullname }}<br>
+            <span class="text-muted">{{ cart.SKU.code}}</span><br>
+            <strong>Color:</strong> {{ cart.SKU.color.name }}<br>
+            <strong>Size:</strong> {{ cart.SKU.size.name }}<br>
+          </td>
+          <td>
+              <input class="form-control" title="qty" type="number" [value]="cart.qty" pattern="\d+">
+          </td>
+          <td><a class="btn btn-outline-danger"><fa name="trash"></fa></a></td>
+          <td>{{ cart.SKU.price * cart.qty | currency: 'Rp'}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">Total</th>
+          <td>{{ total | currency: 'Rp'}}</td>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td colspan="2" class="text-right">
+            <button class="btn btn-warning">Clear Cart</button>
+            <button class="btn btn-primary">Checkout</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
