@@ -25,6 +25,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SearchComponent } from './components/search/search.component';
+import { AngularFontAwesomeModule} from 'angular-font-awesome';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { SearchComponent } from './components/search/search.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [
       RestService,
