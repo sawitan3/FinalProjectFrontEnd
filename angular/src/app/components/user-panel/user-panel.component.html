@@ -30,13 +30,7 @@
                   <td>{{ order.time}}</td>
                   <td>{{ order.total}}</td>
                   <td>Status</td>
-                  <td class="text-right">
-                    <a
-                      [routerLink]="['pay', order.id]"
-                      class="btn btn-success"
-                    >Pay</a>
-                    <a [routerLink]="['user']" class="btn btn-dark">View details</a>
-                  </td>
+                  <td><a class="btn btn-dark" data-toggle="modal" data-target="#detailTrans" (click)="detailTransaction(order.id)">View details</a></td>
                 </tr>
               </tbody>
             </table>
@@ -68,13 +62,13 @@
                   <h3>Change Password</h3>
                   <div class="form-group">
                     <label for="pass">New password</label>
-                    <input type="password" class="form-control" name="pass" id="pass">
+                    <input type="password" class="form-control" [(ngModel)]="data.pass" name="pass" id="pass">
                   </div>
                   <div class="form-group">
                     <label for="pass_confirm">Confirm passowrd</label>
-                    <input type="password" class="form-control" name="pass_confirm" id="pass_confirm">
+                    <input type="password" class="form-control" [(ngModel)]="data.repass" name="pass_confirm" id="pass_confirm">
                   </div>
-                  <button type="submit" class="btn btn-primary">Change password</button>
+                  <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#message" (click)="changePassword()">Change password</button>
                 </form>
               </div>
             </div>
@@ -124,18 +118,40 @@
   </div>
 </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Update profile and Update password -->
+  <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+          <h5 class="modal-title" id="exampleModalLabel1">Message</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <app-error-message></app-error-message>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Transaction -->
+  <div class="modal fade" id="detailTrans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Transaction Detail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--information here-->
+          <app-error-message></app-error-message>
+          <p>Hallo</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
