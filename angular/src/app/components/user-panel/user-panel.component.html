@@ -21,6 +21,8 @@
                   <th>ID</th>
                   <th>Time</th>
                   <th>Total</th>
+                  <th>Phone</th>
+                  <th>Address</th>
                   <th colspan="2">Status</th>
                 </tr>
               </thead>
@@ -29,6 +31,8 @@
                   <th>{{ order.id }}</th>
                   <td>{{ order.time }}</td>
                   <td>{{ order.total | currency : 'Rp ' }} </td>
+                  <td>{{ order.address.phone_number }}</td>
+                  <td>{{ order.address.entry_name }}<br>{{ order.address.address }}</td>
                   <td>{{ order.status }}</td>
                   <td><a class="btn btn-dark" data-toggle="modal" data-target="#detailTrans" (click)="detailTransaction(order.id)">View details</a></td>
                 </tr>
@@ -150,7 +154,6 @@
         </div>
         <div class="modal-body">
           <!--information here-->
-          <app-error-message></app-error-message>
           <div class="table-responsive">
             <table class="table">
               <thead>

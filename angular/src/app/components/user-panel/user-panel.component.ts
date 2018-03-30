@@ -26,6 +26,10 @@ export class UserPanelComponent implements OnInit {
     }, err => {
       this.msg = err;
     });
+    this.loadProfile();
+  }
+
+  loadProfile(){
     this.crud.load('/api/user/profile').subscribe(res => {
       this.addresses = res['address'];
       this.model = res;
@@ -37,6 +41,7 @@ export class UserPanelComponent implements OnInit {
   changeProfile(){
     this.crud.update('/api/user/updateProfile', this.model).subscribe(res=>{
         this.message.sendMessage('alert-success', res);
+        this.loadProfile();
     }, err=>{
         this.message.sendMessage('alert-danger', err.error);
     });
@@ -63,6 +68,7 @@ export class UserPanelComponent implements OnInit {
   deleteAddress(id: any){
     this.crud.delete(`/api/user/deleteAddress?id=${id}`).subscribe(res=>{
         this.message.sendMessage('alert-success',res);
+        this.loadProfile();
     },err=>{
         this.message.sendMessage('alert-danger',err);
     });
