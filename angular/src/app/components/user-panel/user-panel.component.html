@@ -27,9 +27,9 @@
               <tbody>
                 <tr *ngFor="let order of orders">
                   <th>{{ order.id }}</th>
-                  <td>{{ order.time}}</td>
-                  <td>{{ order.total}}</td>
-                  <td>Status</td>
+                  <td>{{ order.time }}</td>
+                  <td>{{ order.total }}</td>
+                  <td>{{ order.status }}</td>
                   <td><a class="btn btn-dark" data-toggle="modal" data-target="#detailTrans" (click)="detailTransaction(order.id)">View details</a></td>
                 </tr>
               </tbody>
@@ -151,7 +151,26 @@
         <div class="modal-body">
           <!--information here-->
           <app-error-message></app-error-message>
-          <p>Hallo</p>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>QTY</th>
+                <th>Price(each)</th>
+                <th colspan="2">Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let detailOrder of detailOrders">
+                <td>{{ detailOrder.sku.fullname }}</td>
+                <td>{{ detailOrder.qty }}</td>
+                <td>{{ detailOrder.paid }}</td>
+                <td>{{ detailOrder.sku.size.name }}/{{detailOrder.sku.color.name}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

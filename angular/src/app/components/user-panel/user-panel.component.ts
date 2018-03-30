@@ -11,6 +11,7 @@ export class UserPanelComponent implements OnInit {
   public msg: any = {};
   public orders: any = [];
   public addresses: any = [];
+  public detailOrders: any = [];
   public model: any = {};
   public data: any = {};
 
@@ -51,9 +52,10 @@ export class UserPanelComponent implements OnInit {
     }
   }
 
-  detailTransactioin(id: any){
-    this.crud.load(`/api/user/getDetailHead?id=${id}`).subscribe(res=>{
-      
+  detailTransaction(id: any){
+    this.crud.load(`/api/user/detailHead?id=${id}`).subscribe(res=>{
+      this.detailOrders = res;
+      console.log(res);
     },err=>{
         this.message.sendMessage('alert-danger',err);
     });

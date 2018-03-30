@@ -8,10 +8,11 @@ import {ItemService} from './item.service';
 export class CrudService {
 
   constructor(private rest: RestService, private router: Router, private data: ItemService) { }
-  header = {headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-  })};
+  getHeader(){
+    return {headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      })};
   }
 
   post (route, body){
@@ -23,7 +24,7 @@ export class CrudService {
   }
 
   load (route) {
-    return this.rest.get(route, this.header);
+    return this.rest.get(route, this.getHeader());
   }
 
   create(route, body){
