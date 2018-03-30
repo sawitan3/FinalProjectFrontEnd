@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--<<<<<<< HEAD-->
 <!--<nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" href="#">HYS Shoes</a>
@@ -35,11 +36,17 @@
 <span (mouseleave)="sel = undefined">
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <a class="navbar-brand" href="#">HYS Shoes</a>
+=======
+<span (mouseleave)="sel = undefined">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">HSY Store</a>
+>>>>>>> 67e5a17e4f14905d7c562f8c0e6509c0cd36bdf4
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav mr-auto">
+<<<<<<< HEAD
               <li class="nav-item">
                 <a class="nav-link" href="#" [routerLink]="['/']">Home</a>
               </li>
@@ -50,11 +57,14 @@
                 <a class="nav-link" href="#">Products</a>
               </li>
               <li class="nav-item" *ngFor="let l1 of navs; let i = index" (mouseenter)="sel = i" >
+=======
+             <li class="nav-item" *ngFor="let l1 of navs; let i = index" (mouseenter)="sel = i" >
+>>>>>>> 67e5a17e4f14905d7c562f8c0e6509c0cd36bdf4
                 <a class="nav-link">{{ l1.name }}</a>
-              </li>
+             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" (submit)="search()">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="q" [(ngModel)]="q">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
           <ul class="navbar-nav">
@@ -93,7 +103,10 @@
           </ul>
         </div>
       </div>
+<<<<<<< HEAD
 <!--&gt;>>>>>> 8f29ccb5f5dc294fbf638dfc95f1cdaf7e23e1c7-->
+=======
+>>>>>>> 67e5a17e4f14905d7c562f8c0e6509c0cd36bdf4
     </div>
   </div>
 </span>

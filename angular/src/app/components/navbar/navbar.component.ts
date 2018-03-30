@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
 
   sel: number = undefined;
 
+  public q: string = undefined;
+  public t: string = undefined;
+
   get isLoggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -31,8 +34,12 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+<<<<<<< HEAD
     this.crud.load('/api/menu');
     this.item.getItem().subscribe(res => {
+=======
+    this.crud.load('/api/menu').subscribe(res=>{
+>>>>>>> 67e5a17e4f14905d7c562f8c0e6509c0cd36bdf4
        this.navs = res;
     });
   }
@@ -42,8 +49,17 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+<<<<<<< HEAD
   loadTags( tags: any ) {
     console.log(tags);
+=======
+  loadTags( tags: any ){
+    this.router.navigate(['search'],{queryParams:{t:tags.join('+')}});
+  }
+
+  search(){
+    this.router.navigate(['search'],{queryParams:{q:this.q}});
+>>>>>>> 67e5a17e4f14905d7c562f8c0e6509c0cd36bdf4
   }
 
 }

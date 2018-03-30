@@ -1,3 +1,76 @@
-<p>
-  user-panel works!
-</p>
+<div class="container">
+  <div class="row pt-3 pb-3">
+    <div class="col">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Time</th>
+                  <th colspan="2">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let order of orders">
+                  <th>{{ order.id }}</th>
+                  <td>{{ order.time}}</td>
+                  <td>{{ order.total}}</td>
+                  <td><a [routerLink]="['user']" class="btn btn-dark ">View details</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="container">
+            <div class="row pt-3 pb-3">
+              <form>
+                <h3>Edit Data</h3>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="model.name" id="name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" [(ngModel)]="model.email" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="text" class="form-control" [(ngModel)]="model.phone" id="phone">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+            </div>
+            <div class="row pt-3 pb-3">
+              <form>
+                <h3>Change Password</h3>
+                <div class="form-group">
+                  <label for="pass">New password</label>
+                  <input type="password" class="form-control" id="pass">
+                </div>
+                <div class="form-group">
+                  <label for="pass_confirm">Confirm passowrd</label>
+                  <input type="password" class="form-control" id="pass_confirm">
+                </div>
+                <button type="submit" class="btn btn-primary">Change password</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
