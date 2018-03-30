@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RestService } from './services/rest.service';
 import { CrudService } from './services/crud.service';
 import { AuthService } from './services/auth.service';
-import {ItemService} from "./services/item.service";
+import {ItemService} from './services/item.service';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
