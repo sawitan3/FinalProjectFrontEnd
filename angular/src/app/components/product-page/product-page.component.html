@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row pt-3 pb-3">
+    <div class="col-md">
+      <div id="product-carousel" class="carousel slide ml-auto mr-auto" style="width: 500px" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <ng-container *ngFor="let image of productData.skus[0].image; let i=index">
+            <li data-target="#product-carousel" [attr.data-slide-to]="i" [ngClass]="{ 'active': i == 0 }"></li>
+          </ng-container>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <ng-container *ngFor="let image of productData.skus[0].image; let i=index">
+            <div [ngClass]="{'carousel-item': true, 'active': i == 0 }">
+              <img [src]="image.large">
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <!-- Reflect current selected SKU-->
+          <span class="text-muted">{{ productData.skus[0].code}}</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ productData.name }}</h5>
+          <p class="card-text">{{ productData.short_desc }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span class="text-muted">Color</span><br>
+            <ng-container *ngFor="let color of colors">
+                <a class="btn mb-1" [ngStyle]="{ 'background-color': '#'+color.hex }">&nbsp;</a>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <span class="text-muted">Size</span><br>
+            <ng-container *ngFor="let size of sizes">
+              <a class="btn btn-outline-secondary mb-1">{{ size.name }}</a>
+            </ng-container>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a class="btn btn-primary text-white">
+            Add to cart
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row pb-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">
+            {{ productData.long_desc }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

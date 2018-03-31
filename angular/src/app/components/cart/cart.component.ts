@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  protected cart_items: any = [
+   cart_items: any = [
     {
       SKU: {
         id: 1,

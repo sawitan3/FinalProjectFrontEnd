@@ -45,7 +45,7 @@ import { AngularFontAwesomeModule} from 'angular-font-awesome';
     SearchComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'angular'}),
     AppRoutingModule,
     RouterModule,
     HttpClientModule,

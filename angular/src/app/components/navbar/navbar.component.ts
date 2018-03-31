@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {CrudService} from '../../services/crud.service';
 import {ItemService} from "../../services/item.service";
 import {Router} from "@angular/router";
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-navbar',
@@ -20,17 +21,22 @@ export class NavbarComponent implements OnInit {
   public t: string = undefined;
 
   get isLoggedIn() {
-    return !!localStorage.getItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('token');
+    }
   }
 
   get Name() {
-    return localStorage.getItem('name');
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('name');
+    }
   }
 
   constructor(
     private item: ItemService,
     private crud: CrudService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
@@ -40,8 +46,10 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
-    this.router.navigate(['']);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.clear();
+      this.router.navigate(['']);
+    }
   }
 
   loadTags( tags: any ){

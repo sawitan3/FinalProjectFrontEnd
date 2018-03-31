@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {RestService} from './rest.service';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MessageService} from './message.service';
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable()
 export class AuthService {
@@ -15,23 +16,26 @@ export class AuthService {
   constructor(
     private rest: RestService,
     private router: Router,
-    private message: MessageService
+    private message: MessageService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   login(body) {
-    this.rest.post('/api/auth/login', body, this.header).subscribe(
-      res => {
-        this.data = res;
-        let name = JSON.parse(atob(this.data.access_token.split('.')[1])).name;
+    if (isPlatformBrowser(this.platformId)) {
+      this.rest.post('/api/auth/login', body, this.header).subscribe(
+        res => {
+          this.data = res;
+          let name = JSON.parse(atob(this.data.access_token.split('.')[1])).name;
 
-        localStorage.setItem('token', this.data.access_token);
-        localStorage.setItem('name', name);
-        this.router.navigate(['/']);
-      },
-      err =>{
-        let error = err.error;
-        this.message.sendMessage('alert-danger', error);
-      });
+          localStorage.setItem('token', this.data.access_token);
+          localStorage.setItem('name', name);
+          this.router.navigate(['/']);
+        },
+        err => {
+          let error = err.error;
+          this.message.sendMessage('alert-danger', error);
+        });
+    }
   }
 
   register(body) {
