@@ -73,4 +73,14 @@ export class UserPanelComponent implements OnInit {
         this.message.sendMessage('alert-danger',err);
     });
   }
+
+  addAddress(){
+    this.crud.create('/api/user/addAddress', this.data).subscribe(res=>{
+      this.loadProfile();
+    });
+  }
+
+  clearMessage(){
+    this.message.clearMessage();
+  }
 }

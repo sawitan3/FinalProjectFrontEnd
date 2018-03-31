@@ -82,7 +82,7 @@
               </div>
               <div class="col">
                 <div class="col text-right">
-                  <a class="btn btn-success text-white">
+                  <a class="btn btn-success text-white" (click)="clearMessage()" data-toggle="modal" data-target="#addAddress">
                     <fa name="plus-circle" inverse="yes"></fa>
                     Add new
                   </a>
@@ -104,7 +104,6 @@
                         <td>{{ address.entry_name }}</td>
                         <td>{{ address.phone_number }}</td>
                         <td class="text-right">
-                          <a class="btn btn-outline-primary">Edit</a>
                           <a class="btn btn-outline-danger" data-toggle="modal" data-target="#message" (click)="deleteAddress(address.id)">Delete</a>
                         </td>
                       </tr>
@@ -120,6 +119,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
   <!-- Update profile and Update password -->
@@ -183,22 +183,37 @@
   </div>
 
 <!--add new address-->
-  <!--<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">-->
-    <!--<div class="modal-dialog" role="document">-->
-      <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-          <!--<h5 class="modal-title" id="exampleModalLabel1">Message</h5>-->
-          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-            <!--<span aria-hidden="true">&times;</span>-->
-          <!--</button>-->
-        <!--</div>-->
-        <!--<div class="modal-body">-->
-          <!--<app-error-message></app-error-message>-->
-        <!--</div>-->
-        <!--<div class="modal-footer">-->
-          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
+  <div class="modal fade" id="addAddress" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel3">Add Address</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--Form here-->
+          <app-error-message></app-error-message>
+          <form>
+            <div class="form-group">
+              <label for="addressName">Entry Name</label>
+              <input type="text" class="form-control" [(ngModel)]="data.addressName" name="addressName" id="addressName">
+            </div>
+            <div class="form-group">
+              <label for="addressPhone">Phone</label>
+              <input type="number" class="form-control" [(ngModel)]="data.addressPhone" name="addressPhone" id="addressPhone">
+            </div>
+            <div class="form-group">
+              <label for="addressDetail">Detail</label>
+              <textarea class="form-control" [(ngModel)]="data.addressDetail" name="addressDetail" id="addressDetail"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="addAddress()" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

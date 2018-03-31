@@ -13,7 +13,7 @@ export class MessageService {
   }
 
   clearMessage() {
-    this.subject.next();
+    this.subject.next({type:null, text:null});
   }
 
   getMessage(): Observable<any> {
