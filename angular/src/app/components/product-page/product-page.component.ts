@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { NgStyle } from '@angular/common';
+import {ActivatedRoute, Router} from "@angular/router";
+import {CrudService} from "../../services/crud.service";
+import {MessageService} from "../../services/message.service";
 
 @Component({
   selector: 'app-product-page',
@@ -8,166 +11,67 @@ import { NgStyle } from '@angular/common';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
+  msg: any = {};
+  productData: any = {};
+  colors: any =  [];
+  sizes: any = [];
+  choosen: any = {};
 
-  productData: any = {
-      id: 1,
-      name: 'Product Name',
-      short_desc: 'A short written description with an unknown purpose',
-      long_desc: 'This is an example of a long description that we are going to show in the product page. This text is pretty pointless, but I don\t really care because it\'s just for sample data.',
-      skus: [
-        {
-          id: 1,
-          product_id: 1,
-          color: {
-            id: 1,
-            name: 'red',
-          },
-          size: {
-            id: 1,
-            name: '42'
-          },
-          code: 'KTDG-42-12-13',
-          price: 3500,
-          stock: 3,
-          fullname: 'Kratingdaeng Hitam',
-          image: [
-            {
-              small: 'https://loremflickr.com/128/128/addidas',
-              medium: 'https://loremflickr.com/256/256/addidas',
-              large: 'http://via.placeholder.com/500'
-            },
-            {
-              small: 'https://loremflickr.com/128/128/addidas',
-              medium: 'https://loremflickr.com/256/256/addidas',
-              large: 'http://via.placeholder.com/500'
-            },
-            {
-              small: 'https://loremflickr.com/128/128/addidas',
-              medium: 'https://loremflickr.com/256/256/addidas',
-              large: 'http://via.placeholder.com/500'
-            }
-          ]
-        },
-        {
-          id: 1,
-          product_id: 1,
-          color: {
-            id: 1,
-            name: 'green',
-          },
-          size: {
-            id: 1,
-            name: '42'
-          },
-          code: 'KTDG-42-12-13',
-          price: 3500,
-          stock: 3,
-          fullname: 'Kratingdaeng Hitam',
-          image: [
-            {
-              small: 'https://loremflickr.com/128/128/addidas',
-              medium: 'https://loremflickr.com/256/256/addidas',
-              large: 'https://loremflickr.com/512/512/addidas'
-            }
-          ]
-        }
-      ]
-    };
-
-  colors: any =  [
-    {
-      name: 'Red',
-      hex: 'ff0000'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    },
-    {
-      name: 'Green',
-      hex: '00ff00'
-    },
-    {
-      name: 'Blue',
-      hex: '0000ff'
-    }
-  ];
-
-  sizes: any = [
-    {
-      name: '42'
-    },
-    {
-      name: '43'
-    },
-    {
-      name: '40'
-    },
-    {
-      name: '43'
-    },
-    {
-      name: '40'
-    },
-    {
-      name: '43'
-    },
-    {
-      name: '40'
-    },
-    {
-      name: '43'
-    },
-    {
-      name: '40'
-    },
-    {
-      name: '43'
-    },
-    {
-      name: '40'
-    }
-  ]
-
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private crud: CrudService,
+    private message: MessageService
+  ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(res=>{
+      this.crud.load(`/api/product?id=${res['id']}`).subscribe(ret=>{
+        this.productData = ret;
+        for(let sku of this.productData['skus']){
+          if(this.colors.indexOf(sku['color']['hex']) == -1){
+            this.colors.push(sku['color']['hex']);
+          }
+        }
+        this.choosen = this.productData['skus'][0];
+        this.loadSize();
+      },err=>{
+        this.msg = err;
+      });
+    });
   }
-
+  loadSize(){
+    for(let sku of this.productData['skus']){
+      if(sku['color']['id']==this.choosen['color']['id']){
+        this.sizes.push(sku['size']);
+      }
+    }
+  }
+  chooseColor(hex:any){
+    this.sizes = [];
+    for(let sku of this.productData['skus']){
+      if(sku['color']['hex']==hex){
+          this.choosen = sku;
+          break;
+        }
+      }
+      this.loadSize();
+    }
+  chooseSize(id:any){
+    // console.log(id);
+    for(let sku of this.productData['skus']){
+      if(sku['color']['id']==this.choosen['color']['id'] && sku['size']['id']==id){
+        this.choosen=sku;
+        break;
+      }
+    }
+    // console.log(this.choosen);
+  }
+  addToCart(){
+    this.crud.post('/api/cart',this.choosen).subscribe(res=>{
+      this.message.sendMessage('alert-success',res);
+    },err=>{
+      this.router.navigate(['/login']);
+    });
+  }
 }
