@@ -27,6 +27,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SearchComponent } from './components/search/search.component';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
 
+import { NgAisModule } from 'angular-instantsearch';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AngularFontAwesomeModule} from 'angular-font-awesome';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgAisModule.forRoot()
   ],
   providers: [
       RestService,

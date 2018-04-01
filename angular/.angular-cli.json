@@ -21,6 +21,8 @@
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/angular-instantsearch/bundles/instantsearch.min.css",
+        "../node_modules/angular-instantsearch/bundles/instantsearch-theme-algolia.min.css",
         "styles.css"
       ],
       "scripts": [
