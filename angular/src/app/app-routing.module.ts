@@ -8,6 +8,7 @@ import {AboutUsComponent} from './components/about-us/about-us.component';
 import {ProductPageComponent} from './components/product-page/product-page.component';
 import {SearchComponent} from "./components/search/search.component";
 import {UserPanelComponent} from "./components/user-panel/user-panel.component";
+import {FilterComponent} from "./components/filter/filter.component";
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
     {
         path: 'user',
         component: UserPanelComponent
+    },
+    {
+        path: 'filter',
+        component: FilterComponent
     }
 ];
 

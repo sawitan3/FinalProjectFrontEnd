@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadTags( tags: any ){
-    this.router.navigate(['search'],{queryParams:{t:tags.join('+')}});
+    this.router.navigate(['filter'],{queryParams:{t:tags.join('+')}});
   }
 
   search(){

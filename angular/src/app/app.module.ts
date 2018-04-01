@@ -28,6 +28,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
 
 import { NgAisModule } from 'angular-instantsearch';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NgAisModule } from 'angular-instantsearch';
     CartComponent,
     UserPanelComponent,
     AboutUsComponent,
-    SearchComponent
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'angular'}),
