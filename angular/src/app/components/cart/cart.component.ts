@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+   selected_address = 0;
+   addresses: any = [
+     {
+       id: 0,
+       user_id: '3cc2d41c-34bc-11e8-a6ef-9cd21efccb51',
+       entry_name: 'alamat kos',
+       phone_number: '23042',
+       address: 'A very long long address in a district with a long name. In a city with a long name.'
+     }
+   ];
    cart_items: any = [
     {
       SKU: {

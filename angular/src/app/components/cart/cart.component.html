@@ -33,13 +33,24 @@
         </tr>
       </tbody>
       <tfoot>
-        <tr>
-          <th colspan="4">Total</th>
-          <td>{{ total | currency: 'Rp'}}</td>
-        </tr>
-        <tr>
-          <td colspan="3"></td>
-          <td colspan="2" class="text-right">
+      <tr>
+        <th colspan="4">Total</th>
+        <td>{{ total | currency: 'Rp'}}</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <div class="form-group align-bottom">
+            <label for="address">Address</label>
+            <select class="form-control" *ngIf="!!addresses.length" name="address" id="address">
+              <option *ngFor="let address of addresses" [value]="address.id">{{ address.entry_name }} - {{ address.phone_number }} - {{ address.address }}</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="3">
+          </td>
+          <td colspan="2" class="text-right align-bottom">
             <button class="btn btn-warning">Clear Cart</button>
             <button class="btn btn-primary">Checkout</button>
           </td>
