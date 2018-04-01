@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class RestService {
   url = 'http://localhost:8000';
+  // url = 'https://api.hsy-store.cf';
   constructor(private http: HttpClient) {}
 
   get(route, header){
