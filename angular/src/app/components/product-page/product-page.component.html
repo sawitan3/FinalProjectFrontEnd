@@ -5,7 +5,7 @@
 
         <!-- Indicators -->
         <ul class="carousel-indicators">
-          <ng-container *ngFor="let image of productData.skus[0].image; let i=index">
+          <ng-container *ngFor="let image of productData.skus[0]['images'][0]; let i=index">
             <li data-target="#product-carousel" [attr.data-slide-to]="i" [ngClass]="{ 'active': i == 0 }"></li>
           </ng-container>
         </ul>
@@ -34,7 +34,7 @@
         <div class="card-header">
           <!-- Reflect current selected SKU-->
           <span class="text-muted">{{ choosen.code }}</span>
-          <span>{{ choosen.price }}</span>
+          <span>{{ choosen.price | currency : 'Rp '}}</span>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ productData.name }}</h5>

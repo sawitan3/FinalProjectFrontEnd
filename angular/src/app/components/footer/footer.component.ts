@@ -20,11 +20,7 @@ export class FooterComponent implements OnInit {
     {
       title: 'ABOUT US',
       link: 'about-us',
-      items: [
-        {text: 'Item 1', link: '#'},
-        {text: 'Item 1', link: '#'},
-        {text: 'Item 1', link: '#'}
-      ]
+      items: []
     }
   ];
 

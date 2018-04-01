@@ -76,15 +76,15 @@
 
 <br>
 
-<div class="container">
-  <p style="text-align: center;">Best of HYS</p>
+<div class="container text-center">
+  <h2>Best of HYS</h2>
   <div class="row">
     <div class="col-sm-3" *ngFor="let product of bestProducts">
       <div class="card text-center">
-        <img class="card-img-top" src={{product.image}} alt="Card image cap">
+        <img class="card-img-top" src="https://static.shop.adidas.co.id/media/catalog/product/cache/1/small_image/250x/9df78eab33525d08d6e5fb8d27136e95/C/Q/CQ2444_SL_eCom.jpg" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text">{{product.desc}}</p>
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.short_desc}}</p>
           <a href="#" class="btn btn-dark">Shop Now</a>
         </div>
       </div>
