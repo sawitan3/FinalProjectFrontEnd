@@ -14,7 +14,7 @@
         <div class="carousel-inner">
           <ng-container *ngFor="let image of productData.skus[0].image; let i=index">
             <div [ngClass]="{'carousel-item': true, 'active': i == 0 }">
-              <img [src]="image.large">
+              <img [src]="'https://images.hsy-store.cf' + image.large">
             </div>
           </ng-container>
         </div>
