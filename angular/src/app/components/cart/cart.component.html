@@ -17,42 +17,42 @@
       <tbody>
         <tr *ngFor="let cart of cart_items; let i = index">
           <td>
-            <img [src]="cart.SKU.image.small" [alt]="cart.SKU.fullname">
+            <img src="https://loremflickr.com/128/128/addidas" [alt]="cart.sku['fullname']">
           </td>
           <td>
-            {{ cart.SKU.fullname }}<br>
-            <span class="text-muted">{{ cart.SKU.code}}</span><br>
-            <strong>Color:</strong> {{ cart.SKU.color.name }}<br>
-            <strong>Size:</strong> {{ cart.SKU.size.name }}<br>
+            {{ cart.sku['fullname'] }}<br>
+            <span class="text-muted">{{ cart.sku['code'] }}</span><br>
+            <strong>Color:</strong> {{ cart.sku['color']['name'] }}<br>
+            <strong>Size:</strong> {{ cart.sku['size']['name'] }}<br>
           </td>
           <td>
-              <input class="form-control" title="qty" type="number" [value]="cart.qty" pattern="\d+">
+              <input class="form-control" title="qty" type="number" [value]="cart.qty" min="1" [max]="cart.sku['stock']" pattern="\d+">
           </td>
           <td><a class="btn btn-outline-danger"><fa name="trash"></fa></a></td>
-          <td>{{ cart.SKU.price * cart.qty | currency: 'Rp'}}</td>
+          <td>{{ cart.sku['price'] * cart.qty | currency: 'Rp'}}</td>
         </tr>
       </tbody>
       <tfoot>
-      <tr>
-        <th colspan="4">Total</th>
-        <td>{{ total | currency: 'Rp'}}</td>
-      </tr>
-      <tr>
-        <td colspan="5">
-          <div class="form-group align-bottom">
-            <label for="address">Address</label>
-            <select class="form-control" *ngIf="!!addresses.length" name="address" id="address">
-              <option *ngFor="let address of addresses" [value]="address.id">{{ address.entry_name }} - {{ address.phone_number }} - {{ address.address }}</option>
-            </select>
-          </div>
-        </td>
-      </tr>
-      <tr>
+        <tr>
+          <th colspan="4">Total</th>
+          <td>{{ total | currency: 'Rp'}}</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <div class="form-group align-bottom">
+              <label for="address">Address</label>
+              <select class="form-control" *ngIf="!!addresses.length" name="address" id="address" (change)="selectAddress($event)">
+                <option *ngFor="let address of addresses" [value]="address.id">{{ address.entry_name }} - {{ address.phone_number }} - {{ address.address }}</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
           <td colspan="3">
           </td>
           <td colspan="2" class="text-right align-bottom">
             <button class="btn btn-warning">Clear Cart</button>
-            <button class="btn btn-primary">Checkout</button>
+            <button class="btn btn-primary" (click)="checkout()">Checkout</button>
           </td>
         </tr>
       </tfoot>

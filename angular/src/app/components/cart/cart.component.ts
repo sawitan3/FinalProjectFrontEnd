@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CrudService} from "../../services/crud.service";
 
 @Component({
   selector: 'app-cart',
@@ -6,74 +7,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-   selected_address = 0;
-   addresses: any = [
-     {
-       id: 0,
-       user_id: '3cc2d41c-34bc-11e8-a6ef-9cd21efccb51',
-       entry_name: 'alamat kos',
-       phone_number: '23042',
-       address: 'A very long long address in a district with a long name. In a city with a long name.'
-     }
-   ];
-   cart_items: any = [
-    {
-      SKU: {
-        id: 1,
-        product_id: 1,
-        color: {
-          id: 1,
-          name: 'red',
-        },
-        size: {
-          id: 1,
-          name: '42'
-        },
-        code: 'KTDG-42-12-13',
-        price: 3500,
-        stock: 3,
-        fullname: 'Kratingdaeng Hitam',
-        image: {
-          small: 'https://loremflickr.com/128/128/addidas',
-          medium: 'https://loremflickr.com/256/256/addidas',
-          large: 'https://loremflickr.com/512/512/addidas'
-        }
-      },
-      qty: 5
-    },
-    {
-      SKU: {
-        id: 1,
-        product_id: 1,
-        color: {
-          id: 1,
-          name: 'red',
-        },
-        size: {
-          id: 1,
-          name: '42'
-        },
-        code: 'KTDG-42-12-13',
-        price: 3500,
-        stock: 3,
-        fullname: 'Kratingdaeng Hitam',
-        image: {
-          small: 'https://loremflickr.com/128/128/addidas',
-          medium: 'https://loremflickr.com/256/256/addidas',
-          large: 'https://loremflickr.com/512/512/addidas'
-        }
-      },
-      qty: 5
-    }
-  ];
+   selected_address = 1;
+   addresses: any = [];
+   cart_items: any = [];
 
   get total() {
-    return this.cart_items.reduce( (acc, val) => acc + val.SKU.price, 0);
+    return this.cart_items.reduce( (acc, val) => acc + val.sku.price * val.qty, 0);
   }
 
-  constructor() { }
+  constructor(
+    private crud: CrudService
+  ) { }
 
   ngOnInit() {
+    this.crud.load('/api/cart').subscribe(res=>{
+      this.cart_items = res;
+      // console.log(res);
+    });
+    this.crud.load('/api/user/address').subscribe(res=>{
+      this.addresses = res;
+    });
   }
 
+  selectAddress(e){
+    // console.log(e.target.value);
+    this.selected_address = e.target.value;
+  }
+
+  checkout(){
+    // console.log('haha');
+    this.crud.update('/api/cart',this.cart_items);
+    let payload : any = {'address_id':this.selected_address};
+    this.crud.post('/api/transaction/create', payload).subscribe(res=>{
+      window.location.href = res['redirect'];
+    });
+    // this.crud.post('/api/test')
+  }
 }
